@@ -1,0 +1,16 @@
+main: jibsplugin.ofstuff.Main
+name: JibsPluginOfStuff
+version: 1.0
+author: JibblyJ
+description: Random stuff, in a plugin, made by Jibs (JibblyJ)
+commands:
+  clearchat:
+    description: Clears the chat
+    usage: /test
+    permission: jibspluginofstuff.clearchat
+    permission-message: You don't have permission to use that command.
+  reload:
+    description: Reloads all plugins on the server
+    usage: /reload
+    permission: jibspluginofstuff.reload
+    permission-message: You don't have permission to use that command.

@@ -1,22 +1,14 @@
 package jibsplugin.ofstuff;
 
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.io.File;
-import java.nio.file.Files;
+
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.*;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
-import org.bukkit.event.server.TabCompleteEvent;
 
 
 public class Main extends JavaPlugin implements Listener {
@@ -43,6 +35,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 	}
 	
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e)
     {
@@ -53,10 +46,22 @@ public class Main extends JavaPlugin implements Listener {
         String locX = rawLocX.substring(0, rawLocX.indexOf('.'));
         String locY = rawLocY.substring(0, rawLocY.indexOf('.'));
         String locZ = rawLocZ.substring(0, rawLocZ.indexOf('.'));
-        e.getEntity().sendMessage("§bOh no, you died!  Here are the coordinates of your deathpoint:");
-        e.getEntity().sendMessage("§bX: §7" + locX);
-        e.getEntity().sendMessage("§bY: §7" + locY);
-        e.getEntity().sendMessage("§bZ: §7" + locZ);
+        
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() { // Starts the delay
+
+        	@Override
+        	public void run() {
+                e.getEntity().sendMessage(
+                		"\n§9------------------------------------------" + 
+                		"\n§bOh no, you died!  Here are the coordinates of your deathpoint:" +
+                		"\n §bX: §7" + locX +
+                		"\n §bY: §7" + locY +
+                		"\n §bZ: §7" + locZ +
+                		"\n§9------------------------------------------");
+        	}
+
+        	}, 100L); // Amount of ticks before executing the function above ^. FU's TPS = 20
+        
     }
 	
 	@EventHandler

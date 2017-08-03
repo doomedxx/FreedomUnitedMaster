@@ -2,9 +2,15 @@ package jibsplugin.ofstuff;
 
 
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.tools.DocumentationTool.Location;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.*;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -35,7 +41,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 	}
 	
-
+////////////////////////// DEATH LOCATION /////////////////////////////////
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e)
     {
@@ -52,18 +58,54 @@ public class Main extends JavaPlugin implements Listener {
         	@Override
         	public void run() {
                 e.getEntity().sendMessage(
-                		"\n§9------------------------------------------" + 
+                		"§f------------------------------------------" + 
                 		"\n§bOh no, you died!  Here are the coordinates of your deathpoint:" +
                 		"\n §bX: §7" + locX +
-                		"\n §bY: §7" + locY +
-                		"\n §bZ: §7" + locZ +
-                		"\n§9------------------------------------------");
+                		" §bY: §7" + locY +
+                		" §bZ: §7" + locZ +
+                		"\n§f------------------------------------------");
+               
         	}
 
         	}, 100L); // Amount of ticks before executing the function above ^. FU's TPS = 20
         
     }
-	
+//////////////////////////--- END OF DEATH LOCATION ---/////////////////////////////////
+
+///////////////////////// MOTIVATIONAL MESSAGE ////////////////////////////////
+
+    @EventHandler
+    public void PlayerRespawnEvent(PlayerRespawnEvent event)  {
+    	String[] respawn = {"It's okay. Rise up and try again!",
+    						"We learn from our mistakes.",
+    						"Take a deep breath, now try it again!",
+    						"Hey, atleast you've got full health and hunger!",
+    						"Try to stay positive.",
+    						"Remember what went wrong? Dont do it again!",
+    						"Welcome back!",
+    						"It was just a bad dream..",
+    						"Get Psyched!",
+    						"Your items! Go get them back!",
+    						"Never dig down!",
+    						"You get to fight another day!"
+    						}; // Creates the messages..
+    	    	
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+        	
+        
+        @Override
+        public void run() {
+	        Random Dice = new Random(); 
+	        int n = Dice.nextInt(respawn.length); //... Randomizes it
+	    	Player player = event.getPlayer();
+	    	player.sendTitle(" ", respawn[n], 10, 50, 20); //... prints it!
+        }
+        
+        }, 60L);
+       }
+        
+//////////////////////// END MOTIVATIONAL MESSAGE //////////////////////////
+    
 	@EventHandler
 	public void onLogin(PlayerLoginEvent event)
 	{

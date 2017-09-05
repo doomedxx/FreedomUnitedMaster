@@ -1,4 +1,4 @@
-package jibsplugin.ofstuff;
+package FU.Master;
 
 public class MasterClass {
 

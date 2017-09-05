@@ -1,5 +1,5 @@
-main: jibsplugin.ofstuff.Main
-name: JibsPluginOfStuff
+main: FU.Master.Main
+name: FUMaster
 version: 1.0
 author: DoomeDxx and JibblyJ
 description: Freedom United's one plugin to rule them all!
@@ -7,5 +7,5 @@ commands:
   clearchat:
     description: Clears the chat
     usage: /clearchat
-    permission: jibspluginofstuff.clearchat
+    permission: FUMaster.clearchat
     permission-message: §cYou don't have permission to use that command.

@@ -19,14 +19,14 @@ import org.bukkit.event.player.*;
 
 public class Main extends JavaPlugin implements Listener {
 	
-	private String pfx = c("3") + "[" + c("b") + "Freedom United" + c("3") + "]" + c("7") + " "; //prefix for plugin messages [JPOS]
+	private String pfx = c("3") + "[" + c("b") + "Freedom United" + c("3") + "]" + c("7") + " "; //prefix for plugin messages [Freedom United]
 	
 	private String c(String color)
 	{
-		return "§" + color; //add squiggly wiggly thingy
+		return "Â§" + color; //add squiggly wiggly thingy
 	}
 	
-	private void JBroadcast(String message)
+	private void FUBroadcast(String message)
 	{
 		getServer().broadcastMessage(pfx + message);
 	}
@@ -58,12 +58,12 @@ public class Main extends JavaPlugin implements Listener {
         	@Override
         	public void run() {
                 e.getEntity().sendMessage(
-                		"§f------------------------------------------" + 
-                		"\n§bOh no, you died!  Here are the coordinates of your deathpoint:" +
-                		"\n §bX: §7" + locX +
-                		" §bY: §7" + locY +
-                		" §bZ: §7" + locZ +
-                		"\n§f------------------------------------------");
+                		"Â§f------------------------------------------" + 
+                		"\nÂ§bOh no, you died!  Here are the coordinates of your deathpoint:" +
+                		"\n Â§bX: Â§7" + locX +
+                		" Â§bY: Â§7" + locY +
+                		" Â§bZ: Â§7" + locZ +
+                		"\nÂ§f------------------------------------------");
                
         	}
 
@@ -118,8 +118,7 @@ public class Main extends JavaPlugin implements Listener {
             String label,
             String[] args) {
         if (sender.isOp()) //Op-only commands
-        {
-        	JBroadcast(command.getName() + " " + sender.getName());
+	{
         	switch (command.getName().toLowerCase())
         	{
         		case "clearchat":
@@ -127,10 +126,10 @@ public class Main extends JavaPlugin implements Listener {
         			{
         				getServer().broadcastMessage("");
         			}
-        			JBroadcast("Chat cleared by " + sender.getName());
+        			FUBroadcast("Chat cleared by " + sender.getName());
         			return true;
         		case "reload":
-        			JBroadcast("Reloading...");
+        			FUBroadcast("Reloading...");
         			
         			return true;
         		case "commandname3":
